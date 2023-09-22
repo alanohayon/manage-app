@@ -1,0 +1,44 @@
+body{
+  text-align: center;
+  background-color: black;
+  padding: 15% ;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  color: #ffffff;
+  }
+  form{
+  background-color: black;
+  display: grid;
+  height: 400px;
+  width: 330px;
+  justify-items:center;
+  align-content: center;
+  margin: auto;
+  border: 2px solid white;
+  border-radius: 4%;
+  }
+  
+  
+  input[type="text"],input[type="number"],select{
+  background-color: rgb(255, 255, 255);
+  border: none;
+  border: 2px solid rgba(255, 255, 255, 0.911);
+  border-radius: 5px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size:large;
+  padding: 8px 11px;
+  }
+  input[value="S'inscrire"],  input[value="Modifier"]{
+  background-color: rgb(255, 255, 255);
+  border: none;
+  border: 2px solid rgba(255, 255, 255, 0.911);
+  border-radius: 5px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size:large;
+  padding: 1px 6px;
+  cursor: pointer;
+  }
+  
+  input[value="S'inscrire"]:hover
+  {
+  background: #ffffff;
+  }

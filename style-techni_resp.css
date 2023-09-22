@@ -1,0 +1,127 @@
+
+main {
+    padding-left: 30px;
+}
+
+
+.content-table {
+    /* border-collapse: collapse; */
+    font-family: Arial;
+    border-radius: 8px 8px 8px 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 750px;
+    table-layout: auto;
+    margin:auto;
+    border:2px red;
+}
+
+.content-table{
+  border: 2px solid rgba(255, 28, 28, 0.911);
+  border-radius: 1px;
+
+}
+table,tr,th{
+  border-collapse: collapse;
+  text-align: center;
+  background-color: rgb(223, 219, 219);
+  margin:30px auto;
+  padding:2px;
+  border-color: black;
+ color: black;
+}
+td{
+  border-left: 3px solid rgb(255, 255, 255);
+
+}
+
+.content-table thead tr {
+    background-color: #02c875;
+    /* border-left: 2px solid #dddddd;
+    border-right: 2px solid #dddddd; */
+    color: #fff;
+    text-align: left;
+}
+
+.content-table th, .content-table td {
+  padding: 7px 8px;
+  overflow: hidden;
+}
+
+.content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+    border: 2px green;
+
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    border: 2px green;
+
+}
+/* f3f3f3 */
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 5px solid #000000;
+    border-left: 5px solid #000000;
+
+
+}
+
+.content-table thead th:nth-child(1) {
+    width: 10%;
+    background-color: blue;
+  }
+  
+  .content-table  thead th:nth-child(2) {
+    width: 10%;
+  }
+  
+  .content-table  thead th:nth-child(3) {
+    width: 10%;
+    background-color: blue;
+  }
+  
+  .content-table thead th:nth-child(4) {
+    width: 1%;
+  }
+
+  .content-table thead th:nth-child(5) {
+    height: 20px;
+    background-color: #fdab3d;;
+  }
+  .content-table tbody tr:nth-child {
+    width: 10%;
+    background-color: #ffe1bb;
+  }
+  
+  .content-table thead th:nth-child(6) {
+    width: 10%;
+    background-color: #e2445c;
+  }
+
+
+  .content-table thead th:nth-child(7) {
+    width: 10%;
+    background-color: blue;
+  }
+  
+  .content-table thead th:nth-child(8) {
+    width: 10%;
+    background-color: rgb(0, 0, 0);
+  }
+
+  .content-table thead th:nth-child(9) {
+    width: 10%;
+    background-color: rgb(255, 255, 0);
+  }
+
+  .content-table thead th:nth-child(10) {
+    width: 10%;
+    color:blue;
+    background-color: purple;
+  }
+
+
+
+

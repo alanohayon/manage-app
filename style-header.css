@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Secular One', sans-serif;
+    background-color: #f5f5f5;
+}
+
+
+.nav-header {
+    background-color: #3E497A;
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+}
+
+.menu-gauche {
+    float: left;
+    margin-left: 5%;
+}
+
+.menu-droite {
+    float: right;
+    margin-right:0;
+    border-radius: 5px;
+}
+
+.logogo {
+    margin: 0;
+    padding: 0;
+    letter-spacing: 3px;
+    font-size: 28px;
+}
+
+.logodaccueil {
+    text-decoration: none;
+    color: #fff;
+    text-decoration: underline; 
+
+}
+.pages {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #fff;
+
+}
+
+
+
+
