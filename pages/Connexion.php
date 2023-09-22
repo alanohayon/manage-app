@@ -8,8 +8,8 @@ session_start()
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="connexion.css">
-  <link rel="stylesheet" href="style-header.css">
+  <link rel="stylesheet" href="../style/connexion.css">
+  <link rel="stylesheet" href="../style/style-header.css">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">

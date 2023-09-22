@@ -42,10 +42,10 @@ header("location:Connexion.php");
         <!-- TOUTES LES PAGES -->
         <div class="menu-droite">
             <a href="affichearchive.php" class="pages"><i class="fa fa-user-circle" aria-hidden="true"></i> Archive</a>
-            <a href="Inscrittech.php" class="pages"><i class="fa fa-eye" aria-hidden="true"></i> Ajouter un technicien</a>
+            <a href="pages/Inscrittech.php" class="pages"><i class="fa fa-eye" aria-hidden="true"></i> Ajouter un technicien</a>
             <a href="#" class="pages">|</a>
-            <a href="InscritClient.php" class="pages"><i class="fa fa-database" aria-hidden="true"></i> Ajouter un client</a>
-            <a href="Deco.php" class="pages"><i class="fa fa-sign-out" aria-hidden="true"></i> Deconnexion</i></a>
+            <a href="pages/InscritClient.php" class="pages"><i class="fa fa-database" aria-hidden="true"></i> Ajouter un client</a>
+            <a href="fonctions/Deco.php" class="pages"><i class="fa fa-sign-out" aria-hidden="true"></i> Deconnexion</i></a>
         </div>
     </nav>
   </header>
@@ -105,15 +105,15 @@ while($lig = mysqli_fetch_assoc($resultat)){
  echo" </select><input type='submit' value='Ajouter'></form>";
 echo "</td>
 <td>";
-echo"<a href='chatResp.php'><img src='chat.png' width='20'>";  //possibilité de parler avec le technicien 
+echo "<a href='../fonctions/chatResp.php'><img src='../img/chat.png' width='20'>";  //possibilité de parler avec le technicien
   echo "</td>
 <td>$statut</td>
 <td>";
 if($statut=='Termine'){ //si le statut du probleme est 'en attente'
-  echo"<a href='valider.php?idp=". $ligne["idp"]."'><img src='bouclier-verifier.png' width='20'>";
+  echo"<a href='valider.php?idp=". $ligne["idp"]. "'><img src='img/bouclier-verifier.png' width='20'>";
 echo "</td>
 <td>";
-  echo"<a href='pasvalide.php?idp=". $ligne["idp"]."'><img src='invalide.png' width='15'>";
+  echo"<a href='pasvalide.php?idp=". $ligne["idp"]. "'><img src='img/invalide.png' width='15'>";
 }
   echo "</td>
 </th>"; 
@@ -122,7 +122,7 @@ echo "</td>
 
 </table>
 <a href='affichearchive.php'>Archive Probleme</a>
-<a href='Deco.php'>Deconnexion</a>
+<a href='fonctions/Deco.php'>Deconnexion</a>
 <a href='inscrittech.php'>Ajouter un technicien</a>
 </body>
 </html>

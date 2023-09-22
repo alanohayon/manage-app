@@ -20,10 +20,10 @@ header("location:Connexion.php");
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- <link rel="stylesheet" href="inscrimed.css"> -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style/style.css">
 
-  <link rel="stylesheet" href="connexion.css">
-  <link rel="stylesheet" href="style-header.css">
+  <link rel="stylesheet" href="../style/connexion.css">
+  <link rel="stylesheet" href="../style/style-header.css">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
@@ -41,10 +41,10 @@ header("location:Connexion.php");
         <!-- TOUTES LES PAGES -->
         <div class="menu-droite">
             <a href="afficheclient.php" class="pages"><i class="fa fa-user-circle" aria-hidden="true"></i> Mes demander</a>
-            <a href="chatclient.php" class="pages"><img src='chat.png' width='20'></i> Envoyer un message</a>
+            <a href="chatclient.php" class="pages"><img src='../img/chat.png' width='20'></i> Envoyer un message</a>
 
             <a href="#" class="pages">|</a>
-            <a href="Deco.php" class="pages"><i class="fa fa-sign-out" aria-hidden="true"></i> Deconnexion</i></a>
+            <a href="../fonctions/Deco.php" class="pages"><i class="fa fa-sign-out" aria-hidden="true"></i> Deconnexion</i></a>
         </div>
     </nav>
   </header>
@@ -91,7 +91,7 @@ header("location:afficheClient.php");
 }
 ?>
 <br>
-<a href="Deco.php">Deconnexion</a>
+<a href="../fonctions/Deco.php">Deconnexion</a>
 <!-- lien qui deconnecte le client -->
 <a href="afficheClient.php">affiche Client</a>
 <!-- lien qui redirige le client à la page qui affiche ses problemes envoyé -->

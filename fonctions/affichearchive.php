@@ -88,7 +88,7 @@ echo "</td>
 <td>". $ligne["mail"]."</td>
 <td>". $ligne["technicien"]."</td>
 <td>";
-  echo"Termine <img src='verifier.png' width='10'>";
+  echo "Termine <img src='../img/verifier.png' width='10'>";
   echo "</td>
 <td>";
   echo"<a href='supp.php?idp=". $ligne["idp"]."'><img src='poubelle.png' width='20'><a/>";  //si le responsable souhaite supprimer un probleme des archives
