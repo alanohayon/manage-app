@@ -1,103 +1,72 @@
 <?php
-session_start()
+session_start();
+require_once '../config.php';
+
+$error = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $mail = $_POST['mail'];
+    $mdp = $_POST['mdp'];
+
+    // Vérifier si les champs ne sont pas vides
+    if (empty($mail) || empty($mdp)) {
+        $error = "Tous les champs sont obligatoires!";
+    } else {
+        // Vérification de la connexion
+        try {
+            $stmt = $db->prepare("SELECT * FROM technicien WHERE mail = ?");
+            $stmt->execute([$mail]);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($user && password_verify($mdp, $user['mdp'])) {
+                $_SESSION["mail_user"] = $user['mail'];
+                header("Location: dashboard.php");
+                exit;
+            } else {
+                $error = "Adresse e-mail ou mot de passe incorrect!";
+            }
+        } catch (PDOException $e) {
+            $error = "Erreur lors de la connexion: " . $e->getMessage();
+        }
+    }
+}
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="../style/connexion.css">
-  <link rel="stylesheet" href="../style/style-header.css">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
-
-      <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion à Ticketing</title>
 </head>
 <body>
-<header>
-    <nav class="nav-header" role="navigation">
-        <!-- LOGO A GAUCHE -->
-        <div class="menu-gauche">
-            <a href="Acceuil.php" class="logodaccueil"><h1 class="logogo">TICKETING INC.</a>
-        </div>
-        <!-- TOUTES LES PAGES -->
-        <div class="menu-droite">
-            <a href="InscritClient.php" class="pages"><i class="fa fa-user-circle" aria-hidden="true"></i> S'inscrire</a>
-            <!-- <a href="Responsable.php" class="pages"><i class="fa fa-eye" aria-hidden="true"></i> Responsable</a>
-            <a href="ProbClient.php" class="pages"><i class="far fa-file-alt" aria-hidden="true"></i> Mes demandes</a>
-            <a href="afficheClient.php" class="pages"><i class="fa fa-users" aria-hidden="true"></i> Nos Clients</a>
-            <a href="#" class="pages">|</a>
-            <a href="InscritClient.php" class="pages"><i class="fa fa-database" aria-hidden="true"></i> Inscription</a>
-            <a href="Connexion.php" class="pages"><i class="fa fa-cubes" aria-hidden="true"></i> Connexion</a>
-            <a href="Deco.php" class="pages"><i class="fa fa-sign-out" aria-hidden="true"></i> Deconnexion</i></a> -->
-        </div>
-    </nav>
-  </header>
-  <h1> Se connecter</h1>
+<?php include '../header.php'; ?>
+<div class="bg-gray-200 h-screen flex justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h2 class="text-2xl mb-6 text-center font-bold">Connexion à Ticketing</h2>
 
-<div class="f">
-  <form action="" method="post">
-    <input type="email" name="mail" placeholder="Mail :"required><br><br>  
-    <input type="password" name="mdp" placeholder="Mot de passe :" required><br><br>
-    <input type="submit" value="Connexion" name="bout" >
-  </form>
+        <!-- Afficher les erreurs -->
+        <?php if ($error): ?>
+            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6" role="alert">
+                <p><?= $error ?></p>
+            </div>
+        <?php endif; ?>
+
+        <form action="connexion.php" method="post" class="space-y-6">
+            <div>
+                <label for="mail" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" name="mail" id="mail" required class="mt-1 p-2 w-full border rounded-md">
+            </div>
+            <div>
+                <label for="mdp" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+                <input type="password" name="mdp" id="mdp" required class="mt-1 p-2 w-full border rounded-md">
+            </div>
+            <div>
+                <button type="submit" class="mt-4 w-full p-2 text-white hover:bg-green-700 rounded-md" style="background-color: #3E497A">Se connecter</button>
+            </div>
+        </form>
+    </div>
 </div>
-<?php         
-    $mail = $_POST["mail"];
-    $mdp = $_POST["mdp"];
-    $id = mysqli_connect("127.0.0.1:8889","root","root","SA");
-    $req1 = "select * from responsable where mail='$mail' and mdp='$mdp'" ;
-    $resultat = mysqli_query($id, $req1);
-    $recu = mysqli_fetch_assoc($resultat);
-    $mailb =$recu["mail"];
-    $mdpb =$recu["mdp"];
-
-    if(isset($_POST["bout"])){
-    $req = "select * from client where mail='$mail' and mdp='$mdp' " ;
-    $resultat = mysqli_query($id, $req);
-    $recu = mysqli_fetch_assoc($resultat); //recuperation de la requete
-    $mailb =$recu["mail"];
-    $prenom =$recu["prenom"];
-    $mdpb =$recu["mdp"];
-      if($mail== $mailb and $mdp==$mdpb){ 
-        $_SESSION["id"] = $id;
-        $_SESSION["prenom"] = $prenom;
-        $_SESSION["mail"] = $mailb;
-          header("location:ProbClient.php");
-        }
-        $req1 = "select * from responsable where mail='$mail' and mdp='$mdp'" ;
-        $resultat = mysqli_query($id, $req1);
-        $recu = mysqli_fetch_assoc($resultat);
-        $mailb =$recu["mail"];
-        $mdpb =$recu["mdp"];
-        $prenom =$recu["prenom"];
-        if($mail== $mailb and $mdp==$mdpb ) {
-         $_SESSION["id"] = $id;
-         $_SESSION["mail"] = $mail;
-         $_SESSION["prenom"] = $prenom;
-         header("location:Responsable.php");
-        }
-          $req2 = "select * from technicien where mail='$mail' and mdp='$mdp' " ;
-          $resultat = mysqli_query($id, $req2);
-          $recu = mysqli_fetch_assoc($resultat);
-          $mailb =$recu["mail"];
-         $mdpb =$recu["mdp"];
-          $prenom =$recu["prenom"];
-          if($mail== $mailb and $mdp==$mdpb) {
-           $_SESSION["id"] = $id;
-           $_SESSION["mail"] = $mail;
-           $_SESSION["prenom"] = $prenom;
-            header("location:Technicien.php");
-             }else{ 
-             echo"Mail ou mot de passe incorrect !";
-             }
-  }
-
-?>
 
 </body>
 </html>
