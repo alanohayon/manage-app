@@ -1,37 +1,31 @@
 <?php
 session_start();
-//retient toutes les varianles sessions
-$prenom=($_SESSION["prenom"]);  //variable prenom qui retient le prenom du responsable
-$id = mysqli_connect("127.0.0.1:8889","root","root","SA"); 
-//connexion a la bdd
-$resul = mysqli_query($id, "Select * from responsable where prenom ='$prenom'" );
-//requete qui verifie si le prenom est bien dans la table responsable
-$ligne = mysqli_fetch_assoc($resul);
-$pren=$ligne["prenom"]; //variable 'pren' qui retient le resultat si il y en a
-if($pren == null  ) //si la variable 'pren' est null alors renvoyer l'utilisateur à la page de connexion
-{
+
+//variable prenom qui retient le prenom du responsable
+$prenomResp = $_SESSION["prenomResp"];  
+//ud de connexion
+$id = mysqli_connect("127.0.0.1:8889", "root", "root", "ticketing"); 
+
+//requete pour verifier qu'il s'est bien identifier avant d'arriver ici
+$resulVerif = mysqli_query($id, "Select * from responsable where prenom ='$prenomResp'" );
+
+//si il ne renvoit pas de resultat alors il est redirigé vers la page de connexion
+if (mysqli_num_rows($resulVerif) == 0) {
+
 header("location:Connexion.php");
 }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=
-, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="style-techni_resp.css">
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <link rel="stylesheet" href="style-header.css">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
-
-      <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style-header.css">
 </head>
-    <link rel="stylesheet" href="gestion_oeuvres.css">
+
 <body>
 <header>
     <nav class="nav-header" role="navigation">
@@ -49,21 +43,23 @@ header("location:Connexion.php");
         </div>
     </nav>
   </header>
+
 <?php
-echo"bonjour $prenom";  //variable prenom qui retient le prenom du responsable
+echo"Bonjour $prenomResp !";
 ?>
 
 <table class="content-table"> 
   <tr>
     <!-- Tableau affichant les differentes colonnes renseignant les problemes et les options du responsble -->
-   <th>idp</th>
-    <th>Produit</th>
-    <th>Decription</th>
-    <th>Fichier</th>
-    <th width="33%">Date</th>
-    <th>Email Client</th>
-    <th>Prenom Technicien</th>
-    <th>Ajouter un technicien (Max 4 techniciens)</th>
+   <th>idt</th>
+   <th width="15%">Date</th>
+   <th>Prénom</th>
+    <th>Tâche</th>
+    <th>Precision</th>
+    <th>Details</th>
+    <th>Prioritée</th>
+    <th>Complexité</th>
+    <th>Ajouter + (Max 4)</th>
     <th>Chat</th>
     <th>Statut</th>
     <th>Valider</th>
@@ -71,8 +67,7 @@ echo"bonjour $prenom";  //variable prenom qui retient le prenom du responsable
 </tr>
 
 <?php
-$id = mysqli_connect("127.0.0.1:8889","root","root","SA"); 
-//connexion a la bdd
+
 $resul = mysqli_query($id, "select * from probleme order by statut ='termine' desc"); 
 //executer une requete et stockage du resultat dans $resul
 while($ligne = mysqli_fetch_assoc($resul)){

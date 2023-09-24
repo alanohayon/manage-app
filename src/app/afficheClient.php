@@ -9,10 +9,10 @@ $resul = mysqli_query($id, "Select * from client where prenom ='$prenom'" );
 //requete qui verifie si le prenom est bien dans la table responsable
 $ligne = mysqli_fetch_assoc($resul);
 $pren=$ligne["prenom"]; //variable 'pren' qui retient le resultat si il y en a
-if($pren == null  ) //si la variable 'pren' est null alors renvoyer l'utilisateur à la page de connexion
-{
-header("location:Connexion.php");
-}
+// if($pren == null  ) //si la variable 'pren' est null alors renvoyer l'utilisateur à la page de connexion
+// {
+// header("location:Connexion.php");
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
