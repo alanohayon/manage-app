@@ -18,13 +18,13 @@ $tacheModel = new Tache();
     // Si l'URL contient 'manage-app/inscription', redirigez vers /pages/inscription.php
     if(isset($_GET['url'])) { $urlWanted = $_GET['url']; } else { $urlWanted = ''; }
     if ($urlWanted === 'inscription') {
-        header('Location: pages/inscription.php');
+        header('Location: inscription.php');
         exit;
     } elseif ($urlWanted === 'home') {
-        header('Location: pages/home.php');
+        header('Location: home.php');
         exit;
     } elseif ($urlWanted === 'connexion') {
-        header('Location: pages/connexion.php');
+        header('Location: connexion.php');
         exit;
     } elseif ($urlWanted === 'profil') {
         header('Location: profil.php');

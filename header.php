@@ -9,16 +9,16 @@ if(isset($_GET['url'])) { $urlWanted = $_GET['url']; } else { $urlWanted = ''; }
 
 
 if ($urlWanted === 'inscription') {
-    header('Location: /APPLI-DE-GESTION/manage-app/pages/inscription.php');
+    header('Location: pages/inscription.php');
     exit;
 } elseif ($urlWanted === 'index') {
-    header('Location: /APPLI-DE-GESTION/manage-app/index.php');
+    header('Location: ../index.php');
     exit;
 } elseif ($urlWanted === 'connexion') {
-    header('Location: /APPLI-DE-GESTION/manage-app/pages/connexion.php');
+    header('Location: pages/connexion.php');
     exit;
 } elseif ($urlWanted === 'profil') {
-    header('Location: /APPLI-DE-GESTION/manage-app/pages/profil.php');
+    header('Location: profil.php');
     exit;
 }
 

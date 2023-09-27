@@ -55,5 +55,43 @@ class User {
         }
     }
 
+    //Pas completement fini
+    public function insertTechBDD($nom, $prenom, $mail, $id){
+        if (empty($nom || $prenom || $mail)) {
+            // Gérez la logique pour traiter le cas où $dataPost est vide.
+        } else {
+            // Mise à jour dans la base de données
+            try {
+                $stmt = $this->db->prepare("UPDATE `technicien` SET `nom`=?, `prenom`=?, `mail`=? WHERE `id`= ? ");
+                $stmt->execute([$nom, $prenom, $mail, $id]);
+
+                // Si la mise à jour est réussie, vous pouvez rediriger vers une autre page.
+                // header("Location: dashboard.php");
+                exit;
+            } catch (PDOException $e) {
+                $error = "Erreur lors de la mise à jour du profil : " . $e->getMessage();
+            }
+        }
+    }
+
+    //Pas completement fini
+    public function updateProfilBDD($dataPost, $id){
+        if (empty($dataPost)) {
+            // Gérez la logique pour traiter le cas où $dataPost est vide.
+        } else {
+            // Mise à jour dans la base de données
+            try {
+                $stmt = $this->db->prepare("UPDATE `profil` SET `genre`=?, `ville`=?, `bio`=?, `affinite1`=?, `affinite2`=? WHERE `idp`= ?");
+                $stmt->execute([$dataPost["genre"], $dataPost["ville"], $dataPost["bio"], $dataPost["affinite1"], $dataPost["affinite2"], $id]);
+                
+                // Si la mise à jour est réussie, vous pouvez rediriger vers une autre page.
+                // header("Location: dashboard.php");
+                exit;
+            } catch (PDOException $e) {
+                $error = "Erreur lors de la mise à jour du profil : " . $e->getMessage();
+            }
+        }
+    }
+
 
 }

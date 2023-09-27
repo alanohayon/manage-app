@@ -13,9 +13,6 @@ $user = new User();
 $dataUser = $user->getDataByEmail($useremail);
 
 
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -115,16 +112,16 @@ $dataUser = $user->getDataByEmail($useremail);
                                 <!--NOM ET PRENOM -->
                                 <div class="w-full flex flex-row p-4 space-between" id="prenom-nom">
                                     <div class="">
-                                        <label for="prenom" class="block text-sm font-medium leading-6 text-gray-900">Prénom</label>
+                                        <label for="prenom" class="block text-sm font-medium leading-6 text-gray-900">Prénom *</label>
                                         <div class="mt-2">
-                                            <input type="text" name="prenom" id="prenom" autocomplete="given-name" value="<?= $dataUser['prenom'] ?>" class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                            <input type="text" required name="prenom" id="prenom" autocomplete="given-name" value="<?= $dataUser['prenom'] ?>" class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                         </div>
                                     </div>
 
                                     <div class="ml-6">
-                                        <label for="nom" class="block text-sm font-medium leading-6 text-gray-900">Nom</label>
+                                        <label for="nom" class="block text-sm font-medium leading-6 text-gray-900">Nom *</label>
                                         <div class="mt-2">
-                                            <input type="text" name="nom" id="nom" autocomplete="family-name" value="<?= $dataUser['nom'] ?>" class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                            <input type="text" required name="nom" id="nom" autocomplete="family-name" value="<?= $dataUser['nom'] ?>" class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                         </div>
                                     </div>
                                 </div>
@@ -132,12 +129,13 @@ $dataUser = $user->getDataByEmail($useremail);
                                 <!--EMAIL -->
                                 <div class="w-full flex flex-row pl-4 space-between mt-1.5">
                                     <div class="w-10/12">
-                                        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
+                                        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email *</label>
                                         <div class="mt-2">
-                                            <input type="text" name="email" id="email" autocomplete="family-name" value="<?= $dataUser['mail'] ?>" class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                            <input type="text" required name="email" id="email" autocomplete="family-name" value="<?= $dataUser['mail'] ?>" class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                         </div>
                                     </div>
                                 </div>
+
 
                                 <!--Bio -->
                                 <div class="w-full flex flex-row pl-4 space-between mt-16">
@@ -198,7 +196,7 @@ $dataUser = $user->getDataByEmail($useremail);
                                     <div class="w-10/12">
                                         <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Ville</label>
                                         <div class="mt-2">
-                                            <input type="text" name="city" id="city" autocomplete="city" class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                            <input type="text" name="ville" id="ville" autocomplete="city" class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +205,7 @@ $dataUser = $user->getDataByEmail($useremail);
                                 <div class="w-full flex flex-row pl-4 space-between mt-3">
                                     <div class="w-10/12">
                                         <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Taches en cours :</label>
-                                        <div class="mt-2"> 
+                                        <div class="mt-2">
                                             <!-- div qui doit contenir les taches en cours -->
                                             <!-- <input type="text" name="city" id="city" autocomplete="city" class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"> -->
 
@@ -228,7 +226,7 @@ $dataUser = $user->getDataByEmail($useremail);
                                                 <option value="Architecture code">Architecture code</option>
                                                 <option value="Sécurité App">Sécurité App</option>
                                                 <option value="Quality code">Quality code</option>
-                                                <option value="autres" selected >Autres</option>
+                                                <option value="autres" selected>Autres</option>
                                             </select>
                                         </div>
                                     </div>
@@ -247,7 +245,7 @@ $dataUser = $user->getDataByEmail($useremail);
                                                 <option value="Architecture code">Architecture code</option>
                                                 <option value="Sécurité App">Sécurité App</option>
                                                 <option value="Quality code">Quality code</option>
-                                                <option value="autres" selected >Autres</option>
+                                                <option value="autres" selected>Autres</option>
                                             </select>
                                         </div>
                                     </div>
@@ -312,4 +310,17 @@ $dataUser = $user->getDataByEmail($useremail);
     </div>
 </body>
 
+<?php
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    $user = new User();
+    $updateUser = $user->updateProfilBDD($_POST, $dataUser['id']);
+    $updateUser = $user->insertTechBDD($_POST["nom"], $_POST["prenom"], $_POST["email"], $dataUser['id']);
+
+    // Vérifier si les champs ne sont pas vides
+
+}
+
+?>
 </html>

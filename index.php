@@ -12,13 +12,15 @@ if(isset($_GET['url'])) { $urlWanted = $_GET['url']; } else { $urlWanted = ''; }
 if ($urlWanted === 'inscription') {
     header('Location: pages/inscription.php');
     exit;
-} elseif ($urlWanted === 'home') {
-    header('Location: pages/home.php');
+} elseif ($urlWanted === 'index') {
+    header('Location:index.php');
     exit;
 } elseif ($urlWanted === 'connexion') {
     header('Location: pages/connexion.php');
     exit;
-
+} elseif ($urlWanted === 'profil') {
+    header('Location: profil.php');
+    exit;
 }
 
 ?>
