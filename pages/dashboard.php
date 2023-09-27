@@ -77,36 +77,37 @@ if (isset($_SESSION["mail_user"])) {
 
 <div class="bg-gray-200 h-screen flex justify-center">
 <div class="bg-white p-8 rounded-lg shadow-md w-3/4">
-    <h2 class="text-2xl mb-6 text-center font-bold shadow-md py-4"
-        style=" color: black;
-                border-bottom: 4px solid #f43f5e;
-                line-height: 1.5;">
-        <p style="  color: black;     display: inline-block;
-
-                    border-bottom: 2px solid #f43f5e;
-                    line-height: 1.5;">
+    <h2 class="text-2xl text-center font-bold py-4 border border-4 border-gray-200">
+        <p>
             Dashboard
         </p>
     </h2>
-    <div class="text-center">
-        <button @click="isOpen = !isOpen" type="button" class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" >
-            <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-            </svg>
-        </button>
-        <?php if ($projets === []) {
-            echo "<h3 class='mt-2 text-sm font-semibold text-gray-900'>Aucun projet</h3>";
-            echo "<p class='mt-1 text-sm text-gray-500'>Commencer par créer un nouveau projet.</p>";
-        }
-         ?>
+    <div class="text-2xl mb-6 text-center font-bold py-4 border border-l-4 border-r-4 border-b-4 border-gray-200">
+        <div>
 
-        <div class="mt-2 mb-16">
-            <button @click="isOpen = !isOpen" type="button" class="inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 bg-rose-500" style="box-shadow: #f43f5e 0px 0px 0px 4px inset, rgb(255, 255, 255) -10px 10px 0px -3px, rgb(253, 164, 175) -10px 10px, rgb(255, 255, 255) -20px 20px 0px -10px;">
-                <svg class="-ml-0.5 mr-1.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+        </div>
+    </div>
+    <div class="w-full flex justify-center flex-col items-center text-center ">
+        <div class="w-1/4 border border-3 " style="box-shadow: rgb(229 231 235) 0px 0px 0px 4px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(253, 164, 175) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px;">
+            <button @click="isOpen = !isOpen" type="button" class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" >
+                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
                 </svg>
-                Nouveau Projet
             </button>
+            <?php if ($projets === []) {
+                echo "<h3 class='mt-2 text-sm font-semibold text-gray-900'>Aucun projet</h3>";
+                echo "<p class='mt-1 text-sm text-gray-500'>Commencer par créer un nouveau projet.</p>";
+            }
+             ?>
+
+            <div class="mt-2 mb-10">
+                <button @click="isOpen = !isOpen" type="button" class="inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 bg-rose-500" style="box-shadow: #f43f5e 0px 0px 0px 4px inset, rgb(255, 255, 255) -10px 10px 0px -3px, rgb(253, 164, 175) -10px 10px, rgb(255, 255, 255) -20px 20px 0px -10px;">
+                    <svg class="-ml-0.5 mr-1.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                    </svg>
+                    Nouveau Projet
+                </button>
+            </div>
         </div>
     </div>
 
@@ -114,7 +115,7 @@ if (isset($_SESSION["mail_user"])) {
         <?php
         foreach($projets as $p) {
         ?>
-        <li class="rounded-2xl  h-32 flex justify-center flex-col" style="box-shadow: #f43f5e 0px 0px 0px 4px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(253, 164, 175) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px;">
+        <li class="rounded-2xl  h-32 flex justify-center flex-col" style="box-shadow: rgb(229 231 235) 0px 0px 0px 4px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(253, 164, 175) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px;">
             <div class="w-full flex justify-end pr-3 text-black">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a3.004 3.004 0 002.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852z" />

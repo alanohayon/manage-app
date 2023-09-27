@@ -261,8 +261,8 @@ if(isset($_POST['fermerNotif'])) {
 
     <!-- NAVIGATION  -->
 
-    <nav class="flex w-full justify-center items-center border-b border-b-black" aria-label="Breadcrumb">
-        <ol role="list" class="flex items-center space-x-4 w-3/4 my-4">
+    <nav class="flex justify-center items-center " aria-label="Breadcrumb">
+        <ol role="list" class="flex items-center space-x-4 w-3/4 my-4 p-4 border border-4">
             <li>
                 <div class="flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-gray-700">
