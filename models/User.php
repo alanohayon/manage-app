@@ -76,6 +76,7 @@ class User {
 
     //Pas completement fini
     public function updateProfilBDD($dataPost, $id){
+ 
         if (empty($dataPost)) {
             // Gérez la logique pour traiter le cas où $dataPost est vide.
         } else {
@@ -83,7 +84,6 @@ class User {
             try {
                 $stmt = $this->db->prepare("UPDATE `profil` SET `genre`=?, `ville`=?, `bio`=?, `affinite1`=?, `affinite2`=? WHERE `idp`= ?");
                 $stmt->execute([$dataPost["genre"], $dataPost["ville"], $dataPost["bio"], $dataPost["affinite1"], $dataPost["affinite2"], $id]);
-                
                 // Si la mise à jour est réussie, vous pouvez rediriger vers une autre page.
                 // header("Location: dashboard.php");
                 exit;

@@ -12,7 +12,6 @@ if (isset($_SESSION["mail_user"])) {
 $user = new User();
 $dataUser = $user->getDataByEmail($useremail);
 
-
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +45,11 @@ $dataUser = $user->getDataByEmail($useremail);
                         <a href="dashboard.php">
                             <button class="bg-gray-100 hover:bg-gray-200 font-bold py-1 px-3 rounded border border-gray-300" style="font-size: 0.7rem;">
                                 Aller au Dashboard
+                            </button>
+                        </a>
+                        <a href="../fonctions/Deco.php">
+                            <button class="bg-gray-100 hover:bg-gray-200 font-bold py-1 px-3 rounded border border-gray-300" style="font-size: 0.7rem;">
+                                Se deconnecter
                             </button>
                         </a>
                     </div>
@@ -136,11 +140,16 @@ $dataUser = $user->getDataByEmail($useremail);
                                     </div>
                                 </div>
 
+                                <button type="submit" name="btn_identifiant" class="bg-green-700 text-sm hover:bg-green-600 text-white py-1 px-2 rounded">
+                                     Modifier 
+                                </button>
 
+
+                                <!-- AFFICHER AVEC LES DONNER DE BDD -->
                                 <!--Bio -->
                                 <div class="w-full flex flex-row pl-4 space-between mt-16">
                                     <div class="w-10/12">
-                                        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Bio</label>
+                                        <label for="bio" class="block text-sm font-medium leading-6 text-gray-900"></label>
                                         <div class="mt-2">
                                             <textarea name="bio" id="bio" autocomplete="job" rows="5" placeholder="Dites-en un peu plus sur vous..." class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
                                         </div>
@@ -153,9 +162,8 @@ $dataUser = $user->getDataByEmail($useremail);
                                         <label for="genre" class="block text-sm font-medium leading-6 text-gray-900">Genre</label>
                                         <div class="mt-2">
                                             <select name="genre" id="genre" class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                                <option value="nonspecifie">Non spécifié</option>
                                                 <option value="Homme">Homme</option>
-                                                <option value="Femme">Femme</option>
+                                                <option value="Femme" selected>Femme</option>
                                             </select>
                                         </div>
                                     </div>
@@ -267,7 +275,7 @@ $dataUser = $user->getDataByEmail($useremail);
                                 <!-- Bouton Valider -->
                                 <div class="w-full flex flex-row pl-4 space-between mt-3">
                                     <div class="w-10/12">
-                                        <button type="submit" class="bg-green-700 text-sm hover:bg-green-600 text-white py-1 px-2 rounded">
+                                        <button type="submit" name="btn_profil" class="bg-green-700 text-sm hover:bg-green-600 text-white py-1 px-2 rounded">
                                             Modifier mon profil
                                         </button>
                                     </div>
@@ -313,14 +321,30 @@ $dataUser = $user->getDataByEmail($useremail);
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    $user = new User();
-    $updateUser = $user->updateProfilBDD($_POST, $dataUser['id']);
-    $updateUser = $user->insertTechBDD($_POST["nom"], $_POST["prenom"], $_POST["email"], $dataUser['id']);
+    extract($_POST);
 
-    // Vérifier si les champs ne sont pas vides
+    if (isset($btn_identifiant)) {
 
+        //si le nom, prenom ou le mail a changé alors on met à jour la bdd
+        if ($dataUser['nom'] !== $nom or $dataUser['prenom'] !== $prenom or $dataUser['mail'] !== $email)
+            $updateUser = $user->insertTechBDD($nom, $prenom, $email, $dataUser['id']);
+
+        //GRO BUGG AVEC LE REFRESH DES NOMS PRENOM
+        //rafraichir la page
+        header("location:profil.php");
+    }
+
+    if (isset($btn_profil)) {
+
+        $user = new User();
+        //si aucun element a été changé alors on ne fait rien
+        $updateUser = $user->updateProfilBDD($_POST, $dataUser['id']);
+        //rafraichir la page
+        header("location:profil.php");
+    }
 }
 
+
 ?>
+
 </html>

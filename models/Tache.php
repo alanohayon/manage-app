@@ -14,15 +14,20 @@ class Tache {
     public function creerTache($data) {
         try {
             // Extraction des données
+            $id_projet = $data['id_projet'];
+            $id_tech = $data['id_tech'];
             $titre = $data['titre'];
+            $precision = $data['precision'];
+            $complexite = $data['complexite'];
             $description = $data['description'];
+            $priorite = $data['priorite'];
+            $fichier = $data['fichier'];
             $statut = $data['statut'];
             $date_de_fin = $data['date_de_fin'];
-            $id_projet = $data['id_projet'];
-
+            var_dump($fichier);
             // Requête SQL
-            $stmt = $this->db->prepare("INSERT INTO taches (titre, description, statut, date_de_fin, id_projet) VALUES (?, ?, ?, ?, ?)");
-            $stmt->execute([$titre, $description, $statut, $date_de_fin, $id_projet]);
+            $stmt = $this->db->prepare("INSERT INTO taches (id_projet, id_tech, titre, `precision`, `description`, complexite, priorite, fichier, date_de_fin, statut) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$id_projet, $id_tech, $titre, $precision, $description, $complexite, $priorite, $fichier, $date_de_fin, $statut ]);
 
             return true;
         } catch (PDOException $e) {
