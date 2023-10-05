@@ -74,7 +74,21 @@ $projetDetails = $projetModel->getOneProject($id_projet);
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['titre_new_tache'])) {
 
     extract($_POST);
-    $fichier = $_FILES["fichier"]['name'];
+    $fileData = $_FILES;
+
+    // téléchargé le fichier
+    if (isset($fileData['fichier']) && $fileData['fichier']['error'] == 0) {
+        $uploadPath = '/Applications/MAMP/htdocs/APPLI-DE-GESTION/assets/fichierTache/';
+        $fileName = uniqid() . '_' . basename($fileData['fichier']['name']);
+        $targetFilePath = $uploadPath . $fileName;
+        echo"reussi";
+        var_dump($targetFilePath);
+
+        move_uploaded_file($fileData['fichier']['tmp_name'], $targetFilePath);
+    } else {
+        $fileName = null;
+    }
+
     $tacheData = [
         'id_projet' => $id_projet,
         'id_tech' => $idTechnicien,
@@ -83,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['titre_new_tache'])) {
         'complexite' => $_POST['complexite'],
         'description' => $_POST['description'],
         'priorite' => $_POST['priorite'],
-        'fichier' => $fichier,
+        'fichier' => $fileName,
         'statut' => $_POST['statut'],
         'date_de_fin' => $_POST['date_de_fin']
     ];
@@ -534,9 +548,8 @@ if (isset($_POST['fermerNotif'])) {
                                                                 $fichier = "Pas de fichier"; // si il il n'y a pas de fichier afficher 'pas de ficheier'
 
                                                             } else {
-                                                                $fichier = $tache['fichier']; //nom du fichier
-                                                            } ?>
-                                                            <p class="text-sm leading-6 "><?= $fichier ?></p>
+                                                                echo "<img src='/APPLI-DE-GESTION/assets/fichierTache/".$tache['fichier']."' alt= ".$tache['fichier']." class='w-full max-h-25 max-w-25 object-cover mb-1 rounded-xl' >";
+                                                                } ?>
                                                         </div>
                                                     </td>
                                                     <!-- AFFICHE COMPLEXITE -->
