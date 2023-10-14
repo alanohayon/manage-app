@@ -2,7 +2,7 @@
 
 
 $host = 'localhost';  // ou utiliser 127.0.0.1
-$dbname = 'ticketing';
+$dbname = 'SA';
 $username = 'root';   // utilisateur par défaut de MAMP
 $password = 'root';   // mot de passe par défaut de MAMP
 

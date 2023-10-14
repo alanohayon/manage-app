@@ -1,16 +1,9 @@
-<?php
-
-//authentification
-require_once '../authentication.php';
-
-
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
+    <title>Projets</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
@@ -23,11 +16,11 @@ require_once '../authentication.php';
     <?php include_once '../components/header-nav.php'; ?>
 
 
-    <div id="home-page">
+    <div id="activity-page">
         <div id="head" class="flex flex-row justify-between px-4 pt-6">
             <div id="title">
                 <h1 class="text-2xl">
-                    Bienvenue sur votre tableau de bord
+                    Mon activité
                 </h1>
             </div>
             <div id="create-project">

@@ -93,5 +93,21 @@ class User {
         }
     }
 
+    public function getAllProjectByUserId($user_id) {
+        try {
+            $requete = "SELECT p.id_projet, p.nom_projet, t.mail as createur 
+                    FROM projets p
+                    JOIN technicien_projet tp ON p.id_projet = tp.id_projet
+                    JOIN technicien t ON p.id_createur = t.id
+                    WHERE tp.id_technicien = :id_technicien";
+
+            $stmt = $this->db->prepare($requete);
+            $stmt->execute([':id_technicien' => $user_id]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            return [];
+        }
+    }
+
 
 }

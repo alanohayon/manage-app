@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($user && password_verify($mdp, $user['mdp'])) {
                 $_SESSION["mail_user"] = $user['mail'];
-                header("Location: dashboard.php");
+                header("Location: projects-page.php");
                 exit;
             } else {
                 $error = "Adresse e-mail ou mot de passe incorrect!";

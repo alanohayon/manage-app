@@ -8,7 +8,7 @@ require_once '../models/Tache.php';
 require_once '../models/Project.php';
 
 $userModel = new User();
-$projetModel = new Project();
+$projectModel = new Project();
 $tacheModel = new Tache();
 
 
@@ -51,14 +51,11 @@ if (!$id_projet) {
         die("L'ID du projet est manquant!"); // Si l'ID du projet n'est pas fourni, affichez une erreur
     }
 }
-// Obtenez l'ID du technicien à l'aide de son e-mail
-$idTechnicien = $userModel->getIdByEmail($_SESSION["mail_user"]);
-// Vérifiez si l'utilisateur est associé à ce projet
-$stmt = $db->prepare("SELECT COUNT(*) as count FROM technicien_projet WHERE id_technicien = ? AND id_projet = ?");
-$stmt->execute([$idTechnicien, $id_projet]);
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
-if ($result['count'] == 0) {
-    header("Location: inscription.php"); // Si l'utilisateur n'a pas accès au projet, redirigez-le vers la page d'inscription
+// Utilisez la nouvelle fonction pour vérifier si l'utilisateur est associé au projet
+$isUserAssociated = $projectModel->checkUserCurrentProject($_SESSION["mail_user"], $id_projet);
+
+if(!$isUserAssociated) {
+    header('Location: inscription.php');
     exit();
 }
 
@@ -68,7 +65,7 @@ if ($result['count'] == 0) {
 /**
  ******* AJOUT D'UNE TACHE ******
  */
-$projetDetails = $projetModel->getOneProject($id_projet);
+$projetDetails = $projectModel->getOneProject($id_projet);
 
 // TRAITEMENT PHP POUR LA CRÉATION D'UNE TÂCHE
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['titre_new_tache'])) {
@@ -157,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  ******* RÉCUPÉRATION DES MEMBRES ******
  */
 // Traitement pour la récupération des membres d'un projet
-$members = $projetModel->getMembres($id_projet);
+$members = $projectModel->getMembres($id_projet);
 
 
 /**

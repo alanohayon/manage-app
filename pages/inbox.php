@@ -1,16 +1,9 @@
-<?php
-
-//authentification
-require_once '../authentication.php';
-
-
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
+    <title>Projets</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
@@ -23,16 +16,16 @@ require_once '../authentication.php';
     <?php include_once '../components/header-nav.php'; ?>
 
 
-    <div id="home-page">
+    <div id="inbox-page">
         <div id="head" class="flex flex-row justify-between px-4 pt-6">
             <div id="title">
                 <h1 class="text-2xl">
-                    Bienvenue sur votre tableau de bord
+                    Boîte de réception
                 </h1>
             </div>
             <div id="create-project">
                 <button @click="isOpen = ! isOpen" class="bg-black hover:bg-gray-700 text-white text-lg py-2 px-4 rounded-full border-b border-b-red-500 border-b-2">
-                    Créer un projet
+                    Écrire un message
                 </button>
             </div>
 
