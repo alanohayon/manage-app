@@ -1,25 +1,32 @@
 <?php
 
-// Récupérez la requête URI et nettoyez-la des slashes inutiles
 $requestUri = trim($_SERVER['REQUEST_URI'], '/');
 
+if(isset($_GET['url'])) {
+    $urlWanted = $_GET['url'];
+} else {
+    $urlWanted = '';
+}
 
-// Si l'URL contient 'manage-app/inscription', redirigez vers /pages/inscription.php
-if(isset($_GET['url'])) { $urlWanted = $_GET['url']; } else { $urlWanted = ''; }
-
+// ici faut mettre le chemin vers le dossier manage-app dans ton serveur local MAMP
+$baseURL = "/APPLI-DE-GESTION/manage-app/";
 
 if ($urlWanted === 'inscription') {
-    header('Location: pages/inscription.php');
+    header('Location: ' . $baseURL . 'pages/inscription.php');
     exit;
 } elseif ($urlWanted === 'index') {
-    header('Location: ../index.php');
+    header('Location: ' . $baseURL . 'index.php');
     exit;
 } elseif ($urlWanted === 'connexion') {
-    header('Location: pages/connexion.php');
+    header('Location: ' . $baseURL . 'pages/connexion.php');
     exit;
 } elseif ($urlWanted === 'profil') {
-    header('Location: profil.php');
+    header('Location: ' . $baseURL . 'pages/profil.php'); // J'ai ajouté 'pages/' ici car le fichier est dans le dossier 'pages'
     exit;
+}
+
+if(isset($_SESSION["mail_user"])) {
+    $userMail = $_SESSION["mail_user"];
 }
 
 

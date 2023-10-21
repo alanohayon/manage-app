@@ -48,7 +48,7 @@ $dataUser = $user->getDataByEmail($useremail);
                             </button>
                         </a>
                         <a href="../fonctions/Deco.php">
-                            <button class="bg-gray-100 hover:bg-gray-200 font-bold py-1 px-3 rounded border border-gray-300" style="font-size: 0.7rem;">
+                            <button class="bg-red-600 hover:bg-red-800 font-bold py-1 px-3 rounded border border-red-300 text-white" style="font-size: 0.7rem;">
                                 Se deconnecter
                             </button>
                         </a>
@@ -140,16 +140,22 @@ $dataUser = $user->getDataByEmail($useremail);
                                     </div>
                                 </div>
 
-                                <button type="submit" name="btn_identifiant" class="bg-green-700 text-sm hover:bg-green-600 text-white py-1 px-2 rounded">
-                                     Modifier 
-                                </button>
-
+                                <div class="w-full mt-4">
+                                    <button type="submit" name="btn_identifiant" class="bg-green-700 text-sm hover:bg-green-600 text-white py-1 px-2 rounded w-1/4">
+                                         Modifier
+                                    </button>
+                                </div>
 
                                 <!-- AFFICHER AVEC LES DONNER DE BDD -->
                                 <!--Bio -->
-                                <div class="w-full flex flex-row pl-4 space-between mt-16">
+
+                                <div class="pt-8" style="border-bottom-color: grey; border-bottom-width: 2px">
+                                    <span class="text-2xl">Je complète mon profil </span>
+                                </div>
+
+                                <div class="w-full flex flex-row pl-4 space-between mt-6">
                                     <div class="w-10/12">
-                                        <label for="bio" class="block text-sm font-medium leading-6 text-gray-900"></label>
+                                        <label for="bio" class="block text-sm font-medium leading-6 text-gray-900">Petite biographie</label>
                                         <div class="mt-2">
                                             <textarea name="bio" id="bio" autocomplete="job" rows="5" placeholder="Dites-en un peu plus sur vous..." class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
                                         </div>
@@ -169,35 +175,6 @@ $dataUser = $user->getDataByEmail($useremail);
                                     </div>
                                 </div>
 
-                                <!-- Votre site web -->
-                                <!-- <div class="w-full flex flex-row pl-4 space-between mt-3">
-                                <div class="w-10/12">
-                                    <label for="website" class="block text-sm font-medium leading-6 text-gray-900">Votre site web</label>
-                                    <div class="mt-2">
-                                        <input type="text" name="website" id="website" autocomplete="family-name" placeholder="example.com" class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                    </div>
-                                </div>
-                            </div> -->
-
-                                <!-- Entreprise ou École -->
-                                <!-- <div class="w-full flex flex-row pl-4 space-between mt-3">
-                                <div class="w-10/12">
-                                    <label for="company" class="block text-sm font-medium leading-6 text-gray-900">Entreprise ou École</label>
-                                    <div class="mt-2">
-                                        <input type="text" name="company" id="company" autocomplete="company" class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                    </div>
-                                </div>
-                            </div> -->
-
-                                <!-- Votre ville -->
-                                <!-- <div class="w-full flex flex-row pl-4 space-between mt-3">
-                                <div class="w-10/12">
-                                    <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Ville</label>
-                                    <div class="mt-2">
-                                        <input type="text" name="city" id="city" autocomplete="city" class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                    </div>
-                                </div>
-                            </div> -->
 
                                 <!-- Ville -->
                                 <div class="w-full flex flex-row pl-4 space-between mt-3">
