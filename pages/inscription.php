@@ -2,8 +2,6 @@
 session_start();
 require_once '../config.php';
 
-var_dump($_SESSION["mail_user"]);
-
 
 // pour les erreurs
 $error = "";
