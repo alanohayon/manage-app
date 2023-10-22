@@ -10,7 +10,7 @@ $ligne = mysqli_fetch_assoc($resul);
 $pren=$ligne["prenom"]; //variable 'pren' qui retient le resultat si il y en a
 if($pren == null  ) //si la variable 'pren' est null alors renvoyer l'utilisateur à la page de connexion
 {
-header("location:Connexion.php");
+header("location:connexion.php");
 }
 ?>
 <!DOCTYPE html>

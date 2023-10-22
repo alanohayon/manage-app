@@ -18,7 +18,7 @@ if ($urlWanted === 'inscription') {
     header('Location: ' . $baseURL . 'index.php');
     exit;
 } elseif ($urlWanted === 'connexion') {
-    header('Location: ' . $baseURL . 'pages/Connexion.php');
+    header('Location: ' . $baseURL . 'pages/connexion.php');
     exit;
 } elseif ($urlWanted === 'profil') {
     header('Location: ' . $baseURL . 'pages/profil.php'); // J'ai ajouté 'pages/' ici car le fichier est dans le dossier 'pages'

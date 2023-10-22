@@ -11,7 +11,7 @@ $ligne = mysqli_fetch_assoc($resul);
 $pren=$ligne["prenom"]; //variable 'pren' qui retient le resultat si il y en a
 if($pren == null  ) //si la variable 'pren' est null alors renvoyer l'utilisateur à la page de connexion
 {
-header("location:Connexion.php");
+header("location:connexion.php");
 }
 ?>
 <!DOCTYPE html>
@@ -31,7 +31,6 @@ header("location:Connexion.php");
       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
 </head>
-<body>
 
 </head>
 <body>
